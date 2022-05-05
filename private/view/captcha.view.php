@@ -1,12 +1,4 @@
 <?php
-session_start();
-
-if (isset($_SESSION['count'])) {
-    $_SESSION['count']++;
-} else {
-    $_SESSION['count'] = 1;
-}
-
 $arr = getRandomNumber();
 
 $captcha = new Captcha();
@@ -18,8 +10,7 @@ $check_choice = $captcha->check_choice();
 
 <div class=" rounded shadow container-fluid text-center signup-bg-img" style="width: 550px; min-width: 340px; padding-top:40px; padding-bottom:40px; margin-top: 100px;">
 
-    <?php if ($_SESSION['count'] > 2) :?>
-        <?php unset($_SESSION['count']); ?>
+    <?php if ($_SESSION['count'] > 1) :?>
         <h1 style="padding-bottom: 15px; font-family: 'Ubuntu Mono', monospace !important; font-weight:bold">Wrong Selection.</h1>
         <form method="post">
             <button class=" rounded-3 btn btn-warning" type="submit" name='try' value="try">Try Again!</button>

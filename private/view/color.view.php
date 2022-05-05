@@ -1,12 +1,4 @@
 <?php
-session_start();
-
-if (isset($_SESSION['count'])) {
-        $_SESSION['count']++;
-} else {
-        $_SESSION['count'] = 1;
-}
-
 $arr = getRandomNumberForColor();
 ?>
 
@@ -15,12 +7,12 @@ $arr = getRandomNumberForColor();
 <div class=" container-fluid" style="min-width: 645; max-width: 650px; margin-top: 150px;">
 
         <div class=" shadow mx-auto rounded-3 text-center signup-bg-img" style="padding-top: 30px;">
-                <?php if ($_SESSION['count'] > 2 ) :?>
-                        <?php unset($_SESSION['count']) ?>
+                <?php if ($_SESSION['cnt'] > 1) : ?>
                         <h1 style="padding-bottom: 15px; font-family: 'Ubuntu Mono', monospace !important; font-weight:bold">Wrong Selection.</h1>
                         <form method="post">
                                 <button class=" rounded-3 btn btn-warning" type="submit" name='try' value="try" style="margin-bottom: 30px;">Try Again!</button>
                         </form>
+                        <?php $_SESSION['cnt'] = 1; ?>
                 <?php else : ?>
                         <h1 style="padding-bottom: 15px; font-family: 'Ubuntu Mono', monospace !important; font-weight:bold">Select Colours Of The Icons</h1>
                         <form class="form-signin" method="post" style=" max-width: 600px;">
@@ -70,9 +62,11 @@ $arr = getRandomNumberForColor();
                                 <input type="hidden" name="arr2" value="<?= $arr[1] ?>">
                                 <input type="hidden" name="arr3" value="<?= $arr[2] ?>">
                                 <button class=" btn-lg btn-primary type=" submit" style="margin: 20px;">Submit</button>
+
                         </form>
+                <?php endif; ?>
         </div>
-<?php endif; ?>
+
 </div>
 
 <?php $this->view("includes/footer"); ?>
