@@ -8,6 +8,13 @@ class Signup extends Controller
 
         if(count($_POST) > 0)
         {
+            if(!empty($_POST['acc-status']))
+            {
+                if($_POST['acc-status'] == 'true')
+                {
+                    $this->redirect('login');
+                }
+            }
             $user = new User();
 
             if($user->validate($_POST))

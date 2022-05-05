@@ -19,14 +19,14 @@
             <?php endif;  ?>
 
             <label for="inputEmail" class="sr-only">Email Address</label>
-            <input type="email" id="inputEmail" class="form-control rounded my-1" name="email" placeholder="Email address" required>
+            <input type="email" id="inputEmail" class="form-control rounded my-1" name="email" value="<?php if(isset($_COOKIE['email'])) { echo $_COOKIE['email']; } ?>" placeholder="Email address" required>
 
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword1" class="form-control rounded my-1" name="password" placeholder="Password" style="margin-bottom: 0px;" required>
+            <input type="password" id="inputPassword1" class="form-control rounded my-1" name="password" value="<?php if(isset($_COOKIE['password'])) { echo $_COOKIE['password']; } ?>" placeholder="Password" style="margin-bottom: 0px;" required>
             
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input type="checkbox" name="remember" value="remember-me" <?php if(isset($_COOKIE['userlogin'])) { echo "checked"; } ?> > Remember me
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
